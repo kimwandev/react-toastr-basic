@@ -22,7 +22,9 @@ class ToastrDemo extends Component{
         return (
             <div>
                 <ToastrContainer />
-                <button className="btn btn-primary" onClick={this.showToast}>Show Toast</button>
+                <div className="jumbotron">
+                    <button className="btn btn-primary" onClick={this.showToast}>Show Toast</button>
+                </div>
             </div>
         )
     }

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir lib",
-    "start": "webpack-dev-server"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -41,8 +41,9 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-    "react": "^15.4.2",
+    "express": "^4.15.2",
+    "flux": "^3.1.2",
     "lodash": "^4.17.4",
-    "flux": "^3.1.2"
+    "react": "^15.4.2"
   }
 }
