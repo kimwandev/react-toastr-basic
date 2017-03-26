@@ -9559,18 +9559,26 @@ var ToastrContainer = function (_Component) {
         _this.state = {
             toastrs: []
         };
+
+        _this.ToastrStoreChangeCallback = _this.ToastrStoreChangeCallback.bind(_this);
         return _this;
     }
 
     _createClass(ToastrContainer, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            var _this2 = this;
-
-            _ToastrStore2.default.on('change', function () {
-                var toastrs = _ToastrStore2.default.toastrs;
-                _this2.setState({ toastrs: toastrs });
-            });
+            _ToastrStore2.default.on('change', this.ToastrStoreChangeCallback);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            _ToastrStore2.default.removeListener('change', this.ToastrStoreChangeCallback);
+        }
+    }, {
+        key: 'ToastrStoreChangeCallback',
+        value: function ToastrStoreChangeCallback() {
+            var toastrs = _ToastrStore2.default.toastrs;
+            this.setState({ toastrs: toastrs });
         }
     }, {
         key: 'render',
@@ -9579,7 +9587,7 @@ var ToastrContainer = function (_Component) {
                 'div',
                 { className: 'toaster-container' },
                 this.state.toastrs.map(function (toastr) {
-                    return _react2.default.createElement(_ToastrItem2.default, { message: toastr.message, id: toastr.id });
+                    return _react2.default.createElement(_ToastrItem2.default, { key: toastr.id, message: toastr.message });
                 })
             );
         }
@@ -9635,16 +9643,11 @@ var ToastrItem = function (_Component) {
             this.setState({ className: 'toaster animated fadeIn' });
         }
     }, {
-        key: 'componentWillUpdate',
-        value: function componentWillUpdate() {
-            this.setState({ className: 'toaster' });
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { key: this.props.id, className: this.state.className },
+                { className: this.state.className },
                 this.props.message
             );
         }
@@ -9741,8 +9744,47 @@ var ToastrDemo = function (_Component) {
                     ),
                     _react2.default.createElement(
                         'div',
+                        { className: 'well' },
+                        'Just import ToastrContainer ',
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                            'code',
+                            null,
+                            'import ToastrContainer from \'react-toastr-basic\'',
+                            _react2.default.createElement('br', null)
+                        ),
+                        _react2.default.createElement('br', null),
+                        'Add <ToastrContainer/> in your index.html (or your parent html. whatever you call that)',
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                            'code',
+                            null,
+                            '<ToastrContainer/>'
+                        ),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement('br', null),
+                        'import Toast to your other htmls (where you want to trigger toast)',
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                            'code',
+                            null,
+                            'import {Toast} from \'react-toastr-basic\'',
+                            _react2.default.createElement('br', null)
+                        ),
+                        _react2.default.createElement('br', null),
+                        'Use It',
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                            'code',
+                            null,
+                            'Toast(\'My Toast Message\')'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
                         null,
-                        'Main.jsx',
+                        'Sample.jsx ',
+                        _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'pre',
                             null,
@@ -9770,7 +9812,13 @@ var ToastrDemo = function (_Component) {
                             _react2.default.createElement('br', null),
                             '\xA0\xA0\xA0\xA0\xA0\xA0return( ',
                             _react2.default.createElement('br', null),
-                            '\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0<button onClick={this.showToast}>CLICK TO TOAST</button>',
+                            '\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0<div> ',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0<ToastrContainer />',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0<button onClick={this.showToast}>CLICK TO TOAST</button>',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0</div> ',
                             _react2.default.createElement('br', null),
                             '\xA0\xA0\xA0\xA0\xA0\xA0)',
                             _react2.default.createElement('br', null),
