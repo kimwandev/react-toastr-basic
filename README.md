@@ -1,1 +1,1 @@
-"# react-toastr" 
+react-toastr-basic
