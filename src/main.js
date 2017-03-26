@@ -1,5 +1,5 @@
-import ToastrContainer from './ToastrContainer.jsx';
-import * as ToastrActions from './actions/ToastrActions.js';
+import ToastrContainer from './ToastrContainer';
+import * as ToastrActions from './actions/ToastrActions';
 
 export default ToastrContainer;
 

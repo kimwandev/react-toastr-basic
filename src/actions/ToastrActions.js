@@ -1,8 +1,8 @@
-import ToastrDispatcher from '../ToastrDispatcher.js';
+import ToastrDispatcher, {dispatchActions} from '../ToastrDispatcher';
 
 export function Pop(message){
     ToastrDispatcher.dispatch({
-        type: 'TOASTR_POP',
+        type: dispatchActions.TOAST,
         payload: message
     })
 
@@ -13,6 +13,6 @@ export function Pop(message){
 
 export function RemoveFirstToastr(){
     ToastrDispatcher.dispatch({
-        type: 'REMOVE_FIRST_TOASTR'
+        type: dispatchActions.CLEAR_PREVIOUS
     })
 }

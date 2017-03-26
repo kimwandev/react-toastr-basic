@@ -1,5 +1,5 @@
 import {EventEmitter} from 'events';
-import ToastrDispatcher from '../ToastrDispatcher.js';
+import ToastrDispatcher, {dispatchActions} from '../ToastrDispatcher';
 import _ from 'lodash';
 
 class ToastrStore extends EventEmitter{
@@ -12,7 +12,7 @@ class ToastrStore extends EventEmitter{
 
     handleActions(action){
         switch(action.type){
-            case "TOASTR_POP":
+            case dispatchActions.TOAST:
                 this.id++;
                 this.toastrs.push({
                     id: this.id,
@@ -21,7 +21,7 @@ class ToastrStore extends EventEmitter{
                 })
                 this.emit('change');
                 break;
-            case "REMOVE_FIRST_TOASTR":
+            case dispatchActions.CLEAR_PREVIOUS:
                 this.toastrs.splice(0, 1);
                 this.emit('change');
                 break;
