@@ -9522,6 +9522,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_ToastrTypes__ = __webpack_require__(20);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ToastrTypes", function() { return __WEBPACK_IMPORTED_MODULE_2__common_ToastrTypes__["default"]; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Toast", function() { return Toast; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastDanger", function() { return ToastDanger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToastSuccess", function() { return ToastSuccess; });
 
 
 
@@ -9529,7 +9531,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__ToastrContainer___default.a);
 
 const Toast = __WEBPACK_IMPORTED_MODULE_1__actions_ToastrActions__["a" /* Pop */];
+const ToastDanger = (msg) => {
+    __WEBPACK_IMPORTED_MODULE_1__actions_ToastrActions__["a" /* Pop */](msg, __WEBPACK_IMPORTED_MODULE_2__common_ToastrTypes__["default"].danger);
+}
 
+const ToastSuccess = (msg) => {
+     __WEBPACK_IMPORTED_MODULE_1__actions_ToastrActions__["a" /* Pop */](msg, __WEBPACK_IMPORTED_MODULE_2__common_ToastrTypes__["default"].success);
+}
 
 
 /***/ }),
@@ -9661,9 +9669,11 @@ var ToastrItem = function (_Component) {
     _createClass(ToastrItem, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            var className = 'toaster animated fadeIn';
+            var className = 'toaster animated';
             if (this.props.toastrType == _ToastrTypes2.default.danger) {
-                className += ' danger';
+                className += ' danger shake';
+            } else {
+                className += ' fadeIn';
             }
             this.setState({ className: className });
         }
@@ -9753,7 +9763,7 @@ var ToastrDemo = function (_Component) {
         key: 'showDangerToastr',
         value: function showDangerToastr() {
             this.setState({ id: this.state.id + 1 });
-            (0, _main.Toast)("Just a dangerous toast! " + this.state.id, _ToastrTypes2.default.danger);
+            (0, _main.ToastDanger)('A dangerous Toast Indeed!');
         }
     }, {
         key: 'render',
@@ -9786,6 +9796,7 @@ var ToastrDemo = function (_Component) {
                                 { className: 'btn btn-primary btn-lg', onClick: this.showToast },
                                 'Toast It!'
                             ),
+                            ' \xA0',
                             _react2.default.createElement(
                                 'a',
                                 { className: 'btn btn-danger btn-lg', onClick: this.showDangerToastr },

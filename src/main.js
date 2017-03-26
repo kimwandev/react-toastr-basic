@@ -5,5 +5,11 @@ import ToastrTypes from './common/ToastrTypes';
 export default ToastrContainer;
 
 const Toast = ToastrActions.Pop;
+const ToastDanger = (msg) => {
+    ToastrActions.Pop(msg, ToastrTypes.danger);
+}
 
-export {Toast, ToastrTypes};
+const ToastSuccess = (msg) => {
+     ToastrActions.Pop(msg, ToastrTypes.success);
+}
+export {Toast, ToastrTypes, ToastDanger, ToastSuccess};
