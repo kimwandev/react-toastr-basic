@@ -12,13 +12,9 @@ export default class ToastrItem extends Component{
         this.setState({className:'toaster animated fadeIn'})
     }
 
-    componentWillUpdate(){
-        this.setState({className:'toaster'})
-    }
-
     render(){
             return (
-                <div key={this.props.id} className={this.state.className}>
+                <div className={this.state.className}>
                     {this.props.message}
                 </div>
             )

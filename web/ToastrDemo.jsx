@@ -28,8 +28,24 @@ class ToastrDemo extends Component{
                         <p>A Basic Toastr that is easy to install and easy to use</p>
                         <p><a className="btn btn-primary btn-lg" onClick={this.showToast}>Toast It!</a></p>
                     </div>
+                    <div className="well">
+                        Just import ToastrContainer <br/>
+                        <code>import ToastrContainer from 'react-toastr-basic'<br/></code>
+                        <br/>
+                        Add &lt;ToastrContainer/> in your index.html (or your parent html. whatever you call that)<br/>
+                        <code>&lt;ToastrContainer/></code>
+                        <br/>
+                        <br/>
+                        import Toast to your other htmls (where you want to trigger toast)<br/>
+                        <code>import &#123;Toast} from 'react-toastr-basic'<br/></code>
+                        <br/>
+                        Use It<br/>
+                        <code>
+                        Toast('My Toast Message')
+                        </code>
+                    </div>
                     <div>
-                        Main.jsx
+                        Sample.jsx <br/>
                         <pre>
                             import React, &#123;Component} from 'react' <br/>
                             import ToastrContainer, &#123;Toast} from 'react-toastr-basic'<br/>
@@ -45,7 +61,10 @@ class ToastrDemo extends Component{
 
                                 &nbsp;&nbsp;&nbsp;render()&#123;<br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return( <br/>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick=&#123;this.showToast}&gt;CLICK TO TOAST&lt;/button&gt;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt; <br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ToastrContainer /><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button onClick=&#123;this.showToast}&gt;CLICK TO TOAST&lt;/button&gt;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; <br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
                                 <br/>
                                 &nbsp;&nbsp;&nbsp;}<br/>
