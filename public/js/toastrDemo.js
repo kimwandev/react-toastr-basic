@@ -9621,15 +9621,30 @@ var ToastrItem = function (_Component) {
     function ToastrItem(props) {
         _classCallCheck(this, ToastrItem);
 
-        return _possibleConstructorReturn(this, (ToastrItem.__proto__ || Object.getPrototypeOf(ToastrItem)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ToastrItem.__proto__ || Object.getPrototypeOf(ToastrItem)).call(this, props));
+
+        _this.state = {
+            className: ''
+        };
+        return _this;
     }
 
     _createClass(ToastrItem, [{
-        key: "render",
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.setState({ className: 'toaster animated fadeIn' });
+        }
+    }, {
+        key: 'componentWillUpdate',
+        value: function componentWillUpdate() {
+            this.setState({ className: 'toaster' });
+        }
+    }, {
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { key: this.props.id, className: "toaster animated fadeIn" },
+                'div',
+                { key: this.props.id, className: this.state.className },
                 this.props.message
             );
         }
@@ -9677,6 +9692,10 @@ var ToastrDemo = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (ToastrDemo.__proto__ || Object.getPrototypeOf(ToastrDemo)).call(this));
 
+        _this.state = {
+            id: 0
+        };
+
         _this.showToast = _this.showToast.bind(_this);
         return _this;
     }
@@ -9684,7 +9703,8 @@ var ToastrDemo = function (_Component) {
     _createClass(ToastrDemo, [{
         key: 'showToast',
         value: function showToast() {
-            (0, _main.Toast)("Message");
+            this.setState({ id: this.state.id + 1 });
+            (0, _main.Toast)("Just a toast! " + this.state.id);
         }
     }, {
         key: 'render',
@@ -9694,9 +9714,71 @@ var ToastrDemo = function (_Component) {
                 null,
                 _react2.default.createElement(_main2.default, null),
                 _react2.default.createElement(
-                    'button',
-                    { className: 'btn btn-primary', onClick: this.showToast },
-                    'Show Toast'
+                    'div',
+                    { className: 'container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'jumbotron' },
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            'react-toastr-basic'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            'A Basic Toastr that is easy to install and easy to use'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'btn btn-primary btn-lg', onClick: this.showToast },
+                                'Toast It!'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        'Main.jsx',
+                        _react2.default.createElement(
+                            'pre',
+                            null,
+                            'import React, {Component} from \'react\' ',
+                            _react2.default.createElement('br', null),
+                            'import ToastrContainer, {Toast} from \'react-toastr-basic\'',
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            'class MyMainApp extends Component{ ',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0constructor(){',
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0}',
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0showToast(){',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0Toast(\'toast message\');',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0}',
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0render(){',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0return( ',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0<button onClick={this.showToast}>CLICK TO TOAST</button>',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0\xA0\xA0\xA0)',
+                            _react2.default.createElement('br', null),
+                            '\xA0\xA0\xA0}',
+                            _react2.default.createElement('br', null),
+                            '}'
+                        )
+                    )
                 )
             );
         }
@@ -39638,9 +39720,9 @@ function Pop(message){
         payload: message
     })
 
-    // setTimeout(() => {
-    //     RemoveFirstToastr();
-    // }, 5000);
+    setTimeout(() => {
+        RemoveFirstToastr();
+    }, 5000);
 }
 
 function RemoveFirstToastr(){
