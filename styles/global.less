@@ -1,4 +1,7 @@
 /* Notification */
+@successColor:#00a478;
+@dangerColor: #ff4d4d;
+@defaultColor:#00a478;
 
 .rounded-corner{
     border-radius: 5px;
@@ -12,11 +15,20 @@
 }
 
 .toaster{
-    background-color:#00a478;
+    background-color:@successColor;
     color:white;
     box-shadow: 2px 2px 12px #222222;
     padding:20px;
-    cursor: pointer;
     margin-bottom: 10px;
+    width: 200px;
+    
     .rounded-corner
+
+    &.success{
+        background-color:@successColor;
+    }
+
+    &.danger{
+        background-color:@dangerColor;
+    }
 }

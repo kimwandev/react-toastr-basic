@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import ToastrContainer, {Toast} from '../src/main';
+import ToastrTypes from '../src/common/ToastrTypes';
 
 class ToastrDemo extends Component{
     constructor(){
@@ -11,11 +12,17 @@ class ToastrDemo extends Component{
         }
 
         this.showToast = this.showToast.bind(this);
+        this.showDangerToastr = this.showDangerToastr.bind(this);
     }
 
     showToast(){
         this.setState({id: this.state.id + 1});
         Toast("Just a toast! " + this.state.id);
+    }
+
+    showDangerToastr(){
+        this.setState({id: this.state.id + 1});
+        Toast("Just a dangerous toast! " + this.state.id, ToastrTypes.danger);
     }
 
     render(){
@@ -26,7 +33,10 @@ class ToastrDemo extends Component{
                     <div className="jumbotron">
                         <h1>react-toastr-basic</h1>
                         <p>A Basic Toastr that is easy to install and easy to use</p>
-                        <p><a className="btn btn-primary btn-lg" onClick={this.showToast}>Toast It!</a></p>
+                        <p>
+                            <a className="btn btn-primary btn-lg" onClick={this.showToast}>Toast It!</a>
+                            <a className="btn btn-danger btn-lg" onClick={this.showDangerToastr}>Toast a Dangerous Toast!</a>
+                        </p>
                     </div>
                     <div className="well">
                         Just import ToastrContainer <br/>

@@ -29,7 +29,7 @@ export default class ToastrContainer extends Component{
         return (
             <div className="toaster-container">
                 {this.state.toastrs.map((toastr) => {
-                    return <ToastrItem key={toastr.id} message={toastr.message}/>
+                    return <ToastrItem key={toastr.id} message={toastr.message} toastrType={toastr.type}/>
                 })}
             </div>
         )

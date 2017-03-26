@@ -13,7 +13,12 @@
   color: white;
   box-shadow: 2px 2px 12px #222222;
   padding: 20px;
-  cursor: pointer;
   margin-bottom: 10px;
-  border-radius: 5px;
+  width: 200px;
+}
+.rounded-corner .toaster.success {
+  background-color: #00a478;
+}
+.toaster.danger {
+  background-color: #ff4d4d;
 }

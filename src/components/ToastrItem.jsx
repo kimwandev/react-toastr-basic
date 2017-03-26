@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ToastrTypes from '../common/ToastrTypes';
 
 export default class ToastrItem extends Component{
     constructor(props){
@@ -9,7 +10,11 @@ export default class ToastrItem extends Component{
     }
 
     componentWillMount(){
-        this.setState({className:'toaster animated fadeIn'})
+        let className = 'toaster animated fadeIn';
+        if(this.props.toastrType == ToastrTypes.danger){
+            className += ' danger';
+        }
+        this.setState({className:className})
     }
 
     render(){
@@ -21,3 +26,11 @@ export default class ToastrItem extends Component{
     }
 }
 
+ToastrItem.propType = {
+    message: React.PropTypes.string.isRequired,
+    toastrType: React.PropTypes.string
+}
+
+ToastrItem.defaultProps = {
+    toastrType: 'success'
+}

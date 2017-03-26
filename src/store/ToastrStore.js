@@ -1,5 +1,6 @@
 import {EventEmitter} from 'events';
 import ToastrDispatcher, {dispatchActions} from '../ToastrDispatcher';
+import ToastrTypes from '../common/ToastrTypes';
 import _ from 'lodash';
 
 class ToastrStore extends EventEmitter{
@@ -23,6 +24,16 @@ class ToastrStore extends EventEmitter{
                 break;
             case dispatchActions.CLEAR_PREVIOUS:
                 this.toastrs.splice(0, 1);
+                this.emit('change');
+                break;
+            case dispatchActions.TOAST_DANGER:
+                this.id++;
+                this.toastrs.push({
+                    id: this.id,
+                    title: 'Success',
+                    type: ToastrTypes.danger,
+                    message: action.payload
+                })
                 this.emit('change');
                 break;
         }
