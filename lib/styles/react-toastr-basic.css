@@ -1,0 +1,24 @@
+/* Notification */
+.rounded-corner {
+  border-radius: 5px;
+}
+.toaster-container {
+  position: fixed;
+  z-index: 20000;
+  right: 10px;
+  top: 10px;
+}
+.toaster {
+  background-color: #00a478;
+  color: white;
+  box-shadow: 2px 2px 12px #222222;
+  padding: 20px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+.rounded-corner .toaster.success {
+  background-color: #00a478;
+}
+.toaster.danger {
+  background-color: #ff4d4d;
+}

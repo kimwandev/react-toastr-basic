@@ -1,11 +1,11 @@
 {
   "name": "react-toastr-basic",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "A Simple Integration React Toastr",
   "main": "lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "lessc ./styles/global.less > ./src/styles/react-toastr-basic.css && webpack && babel src --out-dir lib",
+    "build": "lessc ./styles/global.less > ./src/styles/react-toastr-basic.css && lessc ./styles/global.less > ./lib/styles/react-toastr-basic.css && webpack && babel src --out-dir lib",
     "start": "node index.js",
     "start-dev": "webpack-dev-server"
   },
