@@ -23,9 +23,16 @@ Usage
 
 
 ---
-CSS
+Style (Please add the rule in your webpack.config.js)
 ```
-<link rel="stylesheet" type="text/css" href="toastrStyle.css">
+ module: {
+        rules:[
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+ }
 ```
 
 ---

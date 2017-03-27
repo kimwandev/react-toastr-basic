@@ -9,8 +9,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-            'js/toastrDemo': './web/ToastrDemo.jsx',
-            'toastrStyle': './styles/global.less'
+            'js/toastrDemo': './web/ToastrDemo.jsx'
     },
     output: {
         filename: '[name].js',
@@ -24,17 +23,21 @@ module.exports = {
                 use: ['babel-loader']
             },
             {
-                test: /\.less$/,
-                use: extractLess.extract({
-                    use: [{
-                        loader: "css-loader"
-                    }, {
-                        loader: "less-loader"
-                    }],
-                    // use style-loader in development
-                    fallback: "style-loader"
-                })
-            }
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            } //,
+            // {
+            //     test: /\.less$/,
+            //     use: extractLess.extract({
+            //         use: [{
+            //             loader: "css-loader"
+            //         }, {
+            //             loader: "less-loader"
+            //         }],
+            //         // use style-loader in development
+            //         fallback: "style-loader"
+            //     })
+            // }
         ]
     },
     resolve: {

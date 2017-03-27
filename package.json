@@ -5,10 +5,9 @@
   "main": "lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --out-dir lib",
-    "build-web": "webpack",
+    "build": "lessc ./styles/global.less > ./src/styles/react-toastr-basic.css && webpack && babel src --out-dir lib",
     "start": "node index.js",
-    "dev": "webpack-dev-server"
+    "start-dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
